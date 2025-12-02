@@ -18,4 +18,4 @@ mesh = SubResource("BoxMesh_ibub6")
 skeleton = NodePath("../..")
 
 [node name="CharacterBody3D" parent="CollisionShape3D" instance=ExtResource("1_ibub6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.162465, 0.25, 0.704073)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.162465, 0.506395, 0.704073)
