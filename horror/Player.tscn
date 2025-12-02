@@ -1,11 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://b5k3or1cinyej"]
 
 [ext_resource type="Script" uid="uid://b6nsq7jacqhom" path="res://player.gd" id="1_xhfnw"]
+[ext_resource type="PackedScene" uid="uid://d0aexdtss1xvc" path="res://Untitled.blend" id="2_kpjcp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0rwas"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_kpjcp"]
-size = Vector3(0.1, 0.1, 1)
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_xhfnw")
@@ -18,7 +16,5 @@ shape = SubResource("CapsuleShape3D_0rwas")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56866, 0)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.425239, -0.23686, -0.483537)
-mesh = SubResource("BoxMesh_kpjcp")
-skeleton = NodePath("../..")
+[node name="Untitled" parent="Camera3D" instance=ExtResource("2_kpjcp")]
+transform = Transform3D(0.396897, 0, 0, 0, 0.396897, 0, 0, 0, 0.396897, 0.435482, -0.969365, -0.387709)

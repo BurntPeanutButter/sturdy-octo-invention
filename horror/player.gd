@@ -13,3 +13,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		%Camera3D.rotation_degrees.x = clamp(
 			%Camera3D.rotation_degrees.x, -limitKamera, limitKamera
 			)
+	# As dit inset kry van iets anders as die muis, bv. Keyboard
+	#UI_CANCEL is built in key... ESC
+	elif event.is_action_pressed("ui_cancel"):
+		pass
