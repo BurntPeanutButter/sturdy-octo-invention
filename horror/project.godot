@@ -11,5 +11,10 @@ config_version=5
 [application]
 
 config/name="Horror"
+run/main_scene="uid://ch5uini76gy6j"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[rendering]
+
+renderer/rendering_method="mobile"
