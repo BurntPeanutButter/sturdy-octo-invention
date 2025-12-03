@@ -53,10 +53,10 @@ func _physics_process(delta: float) -> void:
 	velocity.x = direction.x * SPEED
 		
 	var viewBobSpoed: float = 1.0
-	if velocity.x > 0:
+	if velocity.x or velocity.z > 0:
 		if $Kop/AnimationPlayer	.speed_scale != viewBobSpoed:
 			$Kop/AnimationPlayer.speed_scale = viewBobSpoed
-	else:
+	elif velocity.x or velocity.z == 0:
 		if $Kop/AnimationPlayer	.speed_scale != 0.0:
 			$Kop/AnimationPlayer.speed_scale = 0.0
 	#Beweeg z

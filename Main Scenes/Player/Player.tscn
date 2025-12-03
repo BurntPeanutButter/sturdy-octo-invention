@@ -16,10 +16,10 @@ tracks/0/path = NodePath("%Camera3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.0333333, 0.5, 1, 1.5),
+"times": PackedFloat32Array(-0.0333333, 0.5, 1, 1.53333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.15, 1.569, -0.1), Vector3(0, 1.494, -0.1), Vector3(0.15, 1.569, -0.1), Vector3(0, 1.569, -0.1)]
+"values": [Vector3(-0.1, 1.569, -0.1), Vector3(0, 1.469, -0.1), Vector3(0.1, 1.569, -0.1), Vector3(0, 1.469, -0.1)]
 }
 
 [sub_resource type="Animation" id="Animation_ndnrv"]
@@ -53,6 +53,9 @@ debug_color = Color(0, 0.6, 0.698039, 0.866667)
 
 [node name="Kop" type="Node3D" parent="."]
 
+[node name="Arm2" parent="Kop" instance=ExtResource("2_4vtts")]
+transform = Transform3D(-0.206151, 0, -0.035138, 0, 0.209124, 0, 0.035138, 0, -0.206151, 0.75094, 0.0333799, -0.164532)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Kop"]
 libraries = {
 &"": SubResource("AnimationLibrary_ndnrv")
@@ -63,6 +66,3 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 1.569, -0.1)
 current = true
 near = 0.001
-
-[node name="Arm2" parent="Kop/Camera3D" instance=ExtResource("2_4vtts")]
-transform = Transform3D(-0.206151, 0, -0.035138, 0, 0.209124, 0, 0.035138, 0, -0.206151, 0.891565, -1.52312, -0.284056)
