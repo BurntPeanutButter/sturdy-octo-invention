@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5k3or1cinyej"]
+
+[ext_resource type="Script" uid="uid://b6nsq7jacqhom" path="res://Main Scenes/Player/player.gd" id="1_xhfnw"]
+[ext_resource type="PackedScene" uid="uid://wjoygto2ek62" path="res://Arm2.blend" id="2_4vtts"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0rwas"]
+
+[sub_resource type="Environment" id="Environment_xhfnw"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+collision_mask = 255
+script = ExtResource("1_xhfnw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_0rwas")
+debug_color = Color(0, 0.6, 0.698039, 0.866667)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56866, -0.100347)
+environment = SubResource("Environment_xhfnw")
+current = true
+
+[node name="Arm2" parent="Camera3D" instance=ExtResource("2_4vtts")]
+transform = Transform3D(-0.166768, 0, -0.0465749, 0, 0.173149, 0, 0.0465749, 0, -0.166768, 0.6701, -1.23888, -0.348871)
