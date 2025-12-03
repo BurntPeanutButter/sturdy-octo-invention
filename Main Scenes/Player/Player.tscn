@@ -1,11 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5k3or1cinyej"]
+[gd_scene load_steps=4 format=3 uid="uid://b5k3or1cinyej"]
 
 [ext_resource type="Script" uid="uid://b6nsq7jacqhom" path="res://Main Scenes/Player/player.gd" id="1_xhfnw"]
 [ext_resource type="PackedScene" uid="uid://1iqbaqaw1lit" path="res://Arm2.blend" id="2_4vtts"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0rwas"]
-
-[sub_resource type="Environment" id="Environment_xhfnw"]
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_xhfnw")
@@ -18,8 +16,8 @@ debug_color = Color(0, 0.6, 0.698039, 0.866667)
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56866, -0.100347)
-environment = SubResource("Environment_xhfnw")
 current = true
+near = 0.001
 
 [node name="Arm2" parent="Camera3D" instance=ExtResource("2_4vtts")]
 transform = Transform3D(-0.206151, 0, -0.035138, 0, 0.209124, 0, 0.035138, 0, -0.206151, 0.891565, -1.52312, -0.284056)
