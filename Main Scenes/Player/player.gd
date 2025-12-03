@@ -5,6 +5,7 @@ var sensitivity: float = 0.4
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	$Kop/AnimationPlayer.play("head_bob")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -43,11 +44,21 @@ func _physics_process(delta: float) -> void:
 		# Beweeg z
 		input_direction_2D.y
 	)
+	
 	#transform Orientation sodat hy nie net z en x in een rigting vat nie
 	#Basis is vir X Y Z 
 	var direction = transform.basis * input_direction_3D
 	#Beweeg x
+	
 	velocity.x = direction.x * SPEED
+		
+	var viewBobSpoed: float = 1.0
+	if velocity.x > 0:
+		if $Kop/AnimationPlayer	.speed_scale != viewBobSpoed:
+			$Kop/AnimationPlayer.speed_scale = viewBobSpoed
+	else:
+		if $Kop/AnimationPlayer	.speed_scale != 0.0:
+			$Kop/AnimationPlayer.speed_scale = 0.0
 	#Beweeg z
 	velocity.z = direction.z * SPEED
 	
