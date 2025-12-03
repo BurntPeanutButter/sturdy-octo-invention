@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5k3or1cinyej"]
 
-[ext_resource type="Script" uid="uid://b6nsq7jacqhom" path="res://player.gd" id="1_xhfnw"]
+[ext_resource type="Script" uid="uid://b6nsq7jacqhom" path="res://Main Scenes/Player/player.gd" id="1_xhfnw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0rwas"]
 
@@ -15,15 +15,15 @@ script = ExtResource("1_xhfnw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_0rwas")
-debug_color = Color(0, 0.6, 0.69803923, 0.8666667)
+debug_color = Color(0, 0.6, 0.698039, 0.866667)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56866, -0.10034704)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56866, -0.100347)
 environment = SubResource("Environment_xhfnw")
 current = true
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.425239, -0.23686004, -0.074132115)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.425239, -0.23686, -0.0741321)
 mesh = SubResource("BoxMesh_kpjcp")
 skeleton = NodePath("../..")
