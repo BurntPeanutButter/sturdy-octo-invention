@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 var speed: float = 500.0
+var sensitivity: float = 0.4
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -8,10 +9,10 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		#kyk links en regs
-		rotation_degrees.y -= event.relative.x * 0.3
+		rotation_degrees.y -= event.relative.x * sensitivity
 		
 		#Kyk op en af
-		%Camera3D.rotation_degrees.x -= event.relative.y * 0.1# Right Click Kamera dan Unique name
+		%Camera3D.rotation_degrees.x -= event.relative.y * sensitivity# Right Click Kamera dan Unique name
 		#%gun_model # Omdat unique is dit nie meer #Camera3D/gun_model
 		#Maak seker ons kan nie te ver op en af kyk nie
 		%Camera3D.rotation_degrees.x = clamp(

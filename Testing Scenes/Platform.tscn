@@ -1,22 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch5uini76gy6j"]
+[gd_scene load_steps=8 format=3 uid="uid://ch5uini76gy6j"]
 
 [ext_resource type="PackedScene" uid="uid://b5k3or1cinyej" path="res://Main Scenes/Player/Player.tscn" id="1_ibub6"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_2fg6m"]
-size = Vector3(100, 1, 100)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cu77a"]
+albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_cu77a"]
-size = Vector3(100, 1, 100)
+[sub_resource type="Gradient" id="Gradient_cu77a"]
+interpolation_mode = 2
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j5oed"]
+gradient = SubResource("Gradient_cu77a")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lam8o"]
+panorama = SubResource("GradientTexture2D_j5oed")
+
+[sub_resource type="Sky" id="Sky_ww0ri"]
+sky_material = SubResource("PanoramaSkyMaterial_lam8o")
+
+[sub_resource type="Environment" id="Environment_s0l7e"]
+background_mode = 1
+background_color = Color(0.259302, 0, 0.0386808, 1)
+sky = SubResource("Sky_ww0ri")
+ambient_light_source = 2
+ambient_light_color = Color(0.54902, 0, 0, 1)
+tonemap_mode = 2
+tonemap_white = 8.58
+fog_enabled = true
+fog_light_color = Color(0.396883, 0, 0.0137365, 1)
+fog_density = 0.0246
+fog_height = 10.0
+fog_height_density = 0.09
+
+[node name="Game" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.813447, 0.238241, 0.530608, -0.581475, 0.354766, 0.73214, -0.0138154, -0.904092, 0.427115, 11.7456, 5.46059, 6.89418)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1.01969, 0.001118, 0.00102981, -0.00111341, 1.01968, -0.00452143, -0.00103476, 0.0045203, 1.01968, 1.49888, -6.4964, -3.24403)
+use_collision = true
+size = Vector3(20, 12.5054, 16)
+material = SubResource("StandardMaterial3D_cu77a")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_ibub6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.517, 0.4814, -5.47229)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-shape = SubResource("BoxShape3D_2fg6m")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D"]
-mesh = SubResource("BoxMesh_cu77a")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_s0l7e")
