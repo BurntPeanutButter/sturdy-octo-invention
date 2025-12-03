@@ -21,5 +21,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56866, -0.100347)
 environment = SubResource("Environment_xhfnw")
 current = true
 
-[node name="Arm2" parent="." instance=ExtResource("2_4vtts")]
-transform = Transform3D(-0.206151, 0, -0.035138, 0, 0.209124, 0, 0.035138, 0, -0.206151, 0.891565, 0.0455439, -0.384403)
+[node name="Arm2" parent="Camera3D" instance=ExtResource("2_4vtts")]
+transform = Transform3D(-0.206151, 0, -0.035138, 0, 0.209124, 0, 0.035138, 0, -0.206151, 0.891565, -1.52312, -0.284056)

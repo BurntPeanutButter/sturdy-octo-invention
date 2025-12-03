@@ -10,6 +10,9 @@ size = Vector3(100, 1, 100)
 
 [node name="Node3D" type="Node3D"]
 
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_ibub6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.517, 0.4814, -5.47229)
+
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
@@ -17,6 +20,3 @@ shape = SubResource("BoxShape3D_2fg6m")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D"]
 mesh = SubResource("BoxMesh_cu77a")
-
-[node name="CharacterBody3D" parent="RigidBody3D/CollisionShape3D" instance=ExtResource("1_ibub6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5073, 0.5, -5.4815)

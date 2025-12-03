@@ -1,38 +1,62 @@
 extends CharacterBody3D
 
-@export var look_sensitivity: float = 0.003
-@export var jump_velocity := 6.0
-@export var auto_bhop := true
-@export var walk_speed := 7.0
+var speed: float = 500.0
 
-var wish_dir := Vector3.ZERO
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if event is InputEventMouseMotion:
+		#kyk links en regs
+		rotation_degrees.y -= event.relative.x * 0.3
+		
+		#Kyk op en af
+		%Camera3D.rotation_degrees.x -= event.relative.y * 0.1# Right Click Kamera dan Unique name
+		#%gun_model # Omdat unique is dit nie meer #Camera3D/gun_model
+		#Maak seker ons kan nie te ver op en af kyk nie
+		%Camera3D.rotation_degrees.x = clamp(
+			%Camera3D.rotation_degrees.x, -80.0, 80.0
+			)
+	# If "escape key" = Kan muis sien
 	elif event.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	# If "left click" = Kan muis nie meer sien nie
+	elif event.is_action_pressed("left_click"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
-	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		if event is InputEventMouseMotion:
-			rotate_y(-event.relative.x * look_sensitivity)
-			%Camera3D.rotate_x(-event.relative.y * look_sensitivity)
-			%Camera3D.rotation.x = clamp(%Camera3D.rotation.x, deg_to_rad(-90), deg_to_rad(90))
-
-func _handle_air_physics(delta) -> void:
-	self.velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
-
-func _handle_ground_physics(delta) -> void:
-	self.velocity.x = wish_dir.x * walk_speed
-	self.velocity.z = wish_dir.z * walk_speed
-
-func _physics_process(delta):
-	var input_dir = Input.get_vector("right", "left", "down", "up").normalized()
-	wish_dir = self.global_transform.basis * Vector3(-input_dir.x, 0., -input_dir.y)
+func _physics_process(delta: float) -> void:
+	const SPEED: float = 5.5
 	
-	if is_on_floor():
-		_handle_ground_physics(delta)
-	else:
-		_handle_air_physics(delta)
+	var input_direction_2D = Input.get_vector(
+		#move left and right = beweeg -x of +x
+		#move forward and backward = beweeg -y of +y
+		"move_left", "move_right", "move_forward", "move_backward"
+	)
 	
+	# Wys grond beweeging
+	var input_direction_3D = Vector3(
+		# Beweeg x
+		input_direction_2D.x,
+		# Beweeg nie y
+		0.0,
+		# Beweeg z
+		input_direction_2D.y
+	)
+	#transform Orientation sodat hy nie net z en x in een rigting vat nie
+	#Basis is vir X Y Z 
+	var direction = transform.basis * input_direction_3D
+	#Beweeg x
+	velocity.x = direction.x * SPEED
+	#Beweeg z
+	velocity.z = direction.z * SPEED
+	
+	#Gravity
+	velocity.y -= 20.0 * delta
+	#Soek spring key dan gaan op en moet op grond wees
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = 10.0
+		#Hou spacebar in, gaan hoer
+	elif Input.is_action_just_released("jump") and velocity.y > 0.0:
+		velocity.y = 0
+	#Laat toe dat dude kan beweeg met built in metode
 	move_and_slide()
