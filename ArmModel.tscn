@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://wtb8p1ttoax3"]
+
+[ext_resource type="PackedScene" uid="uid://c5vp8tv0o0fup" path="res://Model/Arm.glb" id="1_w66c6"]
+
+[node name="Arm" instance=ExtResource("1_w66c6")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]

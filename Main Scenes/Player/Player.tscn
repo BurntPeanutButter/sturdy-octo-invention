@@ -46,15 +46,15 @@ _data = {
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_xhfnw")
 
+[node name="Arm2" parent="." instance=ExtResource("2_4vtts")]
+transform = Transform3D(-0.206151, 0, -0.035138, 0, 0.209124, 0, 0.035138, 0, -0.206151, 0.75094, 0.0333799, -0.164532)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_0rwas")
 debug_color = Color(0, 0.6, 0.698039, 0.866667)
 
 [node name="Kop" type="Node3D" parent="."]
-
-[node name="Arm2" parent="Kop" instance=ExtResource("2_4vtts")]
-transform = Transform3D(-0.206151, 0, -0.035138, 0, 0.209124, 0, 0.035138, 0, -0.206151, 0.75094, 0.0333799, -0.164532)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Kop"]
 libraries = {
