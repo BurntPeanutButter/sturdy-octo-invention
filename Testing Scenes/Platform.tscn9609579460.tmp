@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ch5uini76gy6j"]
 
-[ext_resource type="PackedScene" uid="uid://40ttmep0v6w6" path="res://Main Scenes/Player/Player.tscn" id="1_ibub6"]
+[ext_resource type="PackedScene" uid="uid://b5k3or1cinyej" path="res://Main Scenes/Player/Player.tscn" id="1_ibub6"]
 [ext_resource type="Texture2D" uid="uid://d11vg1bameyww" path="res://textures/images.jpg" id="1_j5oed"]
 
 [sub_resource type="Gradient" id="Gradient_cu77a"]
@@ -70,5 +70,5 @@ use_collision = true
 size = Vector3(20, 12.5054, 16)
 material = SubResource("StandardMaterial3D_cu77a")
 
-[node name="Player" parent="." instance=ExtResource("1_ibub6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6755447, -0.11985874, -4.1806593)
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_ibub6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)

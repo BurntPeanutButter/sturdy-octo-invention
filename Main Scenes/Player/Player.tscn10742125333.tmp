@@ -73,8 +73,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 1.569, -0.1)
 current = true
 near = 0.001
 
-[node name="Arm" parent="." instance=ExtResource("2_4vtts")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.672515, 0.918202, -0.130446)
+[node name="Arm" parent="Kop" instance=ExtResource("2_4vtts")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.672515, -0.51966804, -0.052404)
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("3_ndnrv")

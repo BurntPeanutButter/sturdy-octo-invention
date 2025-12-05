@@ -4,32 +4,32 @@ extends State
 @export var idle_state: State
 @export var move_state: State
 
-@export var jump_force: float = 900
+@export var jump_force: float = 10.0
 
 func enter() -> void:
 	super()
-	parent.velocity.y = -jump_force
+	parent.velocity.y = jump_force
 
 func process_physics(delta: float) -> State:
-	#Gravity
-	parent.velocity.y -= 20.0 * delta
-	
-	if parent.velocity.y > 0:
-		return fall_state
-		
-	
-	
-	#Soek spring key dan gaan op en moet op grond wees
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = 10.0
-		#Hou spacebar in, gaan hoer
-	elif Input.is_action_just_released("jump") and velocity.y > 0.0:
-		velocity.y = 0
-		
-	if is_on_floor():
-		move_state
+	parent.velocity.y -= gravity * delta
+
+	if Input.is_action_just_released("jump") and parent.velocity.y > 0.0:
+		parent.velocity.y = 0.0
+
+	var direction: Vector3 = parent.input_dir_3d
+	if direction != Vector3.ZERO:
+		var target_x = direction.x * parent.spoed
+		var target_z = direction.z * parent.spoed
+		parent.velocity.x = lerp(parent.velocity.x, target_x, delta * parent.accel)
+		parent.velocity.z = lerp(parent.velocity.z, target_z, delta * parent.accel)
 	else:
-		# Laat player nog voorentoe gaan as spring en land 
-		velocity.x = lerp(velocity.x, direction.x * move_speed, delta * 2.0)
-		velocity.z = lerp(velocity.z, direction.z * move_speed, delta * 2.0)
-		
+		parent.velocity.x = lerp(parent.velocity.x, 0.0, delta * parent.friction)
+		parent.velocity.z = lerp(parent.velocity.z, 0.0, delta * parent.friction)
+
+	parent.move_and_slide()
+
+	# Check if falling AFTER move_and_slide completes
+	if parent.velocity.y < 0.0:
+		return fall_state
+
+	return null

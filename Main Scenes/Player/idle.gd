@@ -4,21 +4,32 @@ extends State
 @export var jump_state: State
 @export var move_state: State
 
+@export var friction: float = 5.0  # tweak this
+
 func enter() -> void:
 	super()
-	parent.velocity.x = 0
+	# FIX: Stop movement immediately when entering idle
+
+func process_physics(delta: float) -> State:
+	parent.velocity.y -= gravity * delta
+	
+	# Alternative FIX: If you want a slide-to-stop effect instead of instant stop,
+	# use this instead of the enter() fix:
+	parent.velocity.x = lerp(parent.velocity.x, 0.0, friction * delta)
+	parent.velocity.z = lerp(parent.velocity.z, 0.0, friction * delta)
+
+	
+	if parent.input_dir_3d != Vector3.ZERO:
+		return move_state
+	
+	parent.move_and_slide()
+	
+	if !parent.is_on_floor():
+		return fall_state
+	
+	return null
 
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed("jump") and parent.is_on_floor():
 		return jump_state
-	if Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right") or Input.is_action_just_pressed("move_backward") or Input.is_action_just_pressed("move_forward"):
-		return move_state
-	return null
-	
-func process_physics(delta: float) -> State:
-	parent.velocity.y += gravity * delta
-	parent.move_and_slide()
-	
-	if !parent.is_on_floor():
-			return fall_state
 	return null
