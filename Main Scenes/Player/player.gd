@@ -2,10 +2,22 @@ extends CharacterBody3D
 
 var speed: float = 500.0
 var sensitivity: float = 0.4
+# Hoe vinnig kop op en af gaan
+const BOB_FREQ = 2.0
+# Hoe hoog en laag kop beweeg
+const BOB_AMP = 0.08
+# Sal kyk hoe ver ons op die golf is
+var t_bob = 0.0
+
+
+# Refrences from nodes need to be @onready
+@onready var kop = $Kop
+@onready var kamera = $Kop/Camera3D
+
 
 func _ready() -> void:
+	#Vang muis
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	$Kop/AnimationPlayer.play("head_bob")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -13,11 +25,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		rotation_degrees.y -= event.relative.x * sensitivity
 		
 		#Kyk op en af
-		%Camera3D.rotation_degrees.x -= event.relative.y * sensitivity# Right Click Kamera dan Unique name
+		kamera.rotation_degrees.x -= event.relative.y * sensitivity# Right Click Kamera dan Unique name
 		#%gun_model # Omdat unique is dit nie meer #Camera3D/gun_model
 		#Maak seker ons kan nie te ver op en af kyk nie
-		%Camera3D.rotation_degrees.x = clamp(
-			%Camera3D.rotation_degrees.x, -80.0, 80.0
+		kamera.rotation_degrees.x = clamp(
+			kamera.rotation_degrees.x, -80.0, 80.0
 			)
 	# If "escape key" = Kan muis sien
 	elif event.is_action_pressed("ui_cancel"):
@@ -25,6 +37,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	# If "left click" = Kan muis nie meer sien nie
 	elif event.is_action_pressed("left_click"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		
+	if Input.is_action_pressed("left_click"):
+		$Lyf/Arm/AnimationPlayer.play("ArmatureAction")
+	else:
+		$Lyf/Arm/AnimationPlayer.play("Idle")
+		
 	
 func _physics_process(delta: float) -> void:
 	const SPEED: float = 5.5
@@ -51,14 +69,7 @@ func _physics_process(delta: float) -> void:
 	#Beweeg x
 	
 	velocity.x = direction.x * SPEED
-		
-	var viewBobSpoed: float = 1.0
-	if velocity.x or velocity.z > 0:
-		if $Kop/AnimationPlayer	.speed_scale != viewBobSpoed:
-			$Kop/AnimationPlayer.speed_scale = viewBobSpoed
-	elif velocity.x or velocity.z == 0:
-		if $Kop/AnimationPlayer	.speed_scale != 0.0:
-			$Kop/AnimationPlayer.speed_scale = 0.0
+	
 	#Beweeg z
 	velocity.z = direction.z * SPEED
 	
@@ -70,5 +81,19 @@ func _physics_process(delta: float) -> void:
 		#Hou spacebar in, gaan hoer
 	elif Input.is_action_just_released("jump") and velocity.y > 0.0:
 		velocity.y = 0
+	
+	# Head bob 
+	# Kyk hoe vinnig die head bob moet wees volgens spoed en kyk hoe na amp vir spring
+	t_bob += delta * velocity.length() * float(is_on_floor())
+	kamera.transform.origin = _headbob(t_bob)
+	$Lyf/Arm.transform.origin = _headbob(t_bob)
+	
 	#Laat toe dat dude kan beweeg met built in metode
 	move_and_slide()
+
+func _headbob(time) ->Vector3:
+	var pos = Vector3.ZERO
+	pos.y = sin(time * BOB_FREQ) * BOB_AMP
+	pos.x = sin(time * BOB_FREQ / 2) * BOB_AMP
+	return pos
+	

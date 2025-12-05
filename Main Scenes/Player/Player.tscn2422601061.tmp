@@ -54,6 +54,9 @@ debug_color = Color(0, 0.6, 0.698039, 0.866667)
 [node name="Kop" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43787, -0.078042)
 
+[node name="Arm" parent="Kop" instance=ExtResource("2_4vtts")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.294385, -0.905189, -0.052404)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Kop"]
 libraries = {
 &"": SubResource("AnimationLibrary_ndnrv")
@@ -64,9 +67,3 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 1.569, -0.1)
 current = true
 near = 0.001
-
-[node name="Lyf" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37813, 0.381732, 0)
-
-[node name="Arm" parent="Lyf" instance=ExtResource("2_4vtts")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.294385, 0.53647, -0.130446)

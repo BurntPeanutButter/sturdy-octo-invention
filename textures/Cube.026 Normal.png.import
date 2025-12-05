@@ -2,20 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2c1f3rebc7or"
-path.s3tc="res://.godot/imported/Arm_Cube.png-bc6709e45ec06abc780dc56476e40a41.s3tc.ctex"
+uid="uid://crgo6c60uekcd"
+path.s3tc="res://.godot/imported/Cube.026 Normal.png-79645136f628934a93547fd252c5b328.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "3c70b22f1b822baebbe97774dc7a0922"
-}
+generator_parameters={}
 
 [deps]
 
-source_file="res://Model/Arm_Cube.png"
-dest_files=["res://.godot/imported/Arm_Cube.png-bc6709e45ec06abc780dc56476e40a41.s3tc.ctex"]
+source_file="res://textures/Cube.026 Normal.png"
+dest_files=["res://.godot/imported/Cube.026 Normal.png-79645136f628934a93547fd252c5b328.s3tc.ctex"]
 
 [params]
 
@@ -28,7 +26,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Model/Arm_Cube.png"
+roughness/src_normal="res://textures/Cube.026 Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
