@@ -40,7 +40,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("left_click"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		
-	if Input.is_action_pressed("left_click"):
+	if Input.is_action_just_pressed("left_click"):
 		$Lyf/Arm/AnimationPlayer.play("ArmatureAction")
 	else:
 		$Lyf/Arm/AnimationPlayer.play("Idle")

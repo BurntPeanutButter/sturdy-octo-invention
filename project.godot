@@ -12,14 +12,13 @@ config_version=5
 
 config/name="Horror Game"
 run/main_scene="uid://ch5uini76gy6j"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=298
 window/size/viewport_height=144
-window/size/mode=2
 window/stretch/mode="viewport"
 
 [input]
