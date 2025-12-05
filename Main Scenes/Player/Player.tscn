@@ -1,7 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5k3or1cinyej"]
+[gd_scene load_steps=12 format=3 uid="uid://b5k3or1cinyej"]
 
 [ext_resource type="Script" uid="uid://b6nsq7jacqhom" path="res://Main Scenes/Player/player.gd" id="1_xhfnw"]
 [ext_resource type="PackedScene" uid="uid://dd3hhxqg4jt7u" path="res://RegteArm.tscn" id="2_4vtts"]
+[ext_resource type="Script" uid="uid://b6mgo2jnhageg" path="res://Main Scenes/Player/state_machine.gd" id="3_ndnrv"]
+[ext_resource type="Script" uid="uid://dqduvui5mnjde" path="res://Main Scenes/Player/idle.gd" id="4_0n08y"]
+[ext_resource type="Script" uid="uid://u0xjauhuq6fc" path="res://Main Scenes/Player/jump.gd" id="5_o8vpl"]
+[ext_resource type="Script" uid="uid://wd40eqj75f1j" path="res://Main Scenes/Player/fall.gd" id="6_xnlso"]
+[ext_resource type="Script" uid="uid://csqyc6y23i5lc" path="res://Main Scenes/Player/move.gd" id="7_0k8gb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0rwas"]
 
@@ -10,7 +15,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%Camera3D:position")
+tracks/0/path = NodePath("../Camera3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,7 +32,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%Camera3D:position")
+tracks/0/path = NodePath("../Camera3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -43,7 +48,7 @@ _data = {
 &"head_bob": SubResource("Animation_4vtts")
 }
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="player" type="CharacterBody3D"]
 script = ExtResource("1_xhfnw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -51,22 +56,47 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_0rwas")
 debug_color = Color(0, 0.6, 0.698039, 0.866667)
 
-[node name="Kop" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43787, -0.078042)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Kop"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Kop")
 libraries = {
 &"": SubResource("AnimationLibrary_ndnrv")
 }
 
-[node name="Camera3D" type="Camera3D" parent="Kop"]
+[node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 1.569, -0.1)
 current = true
 near = 0.001
+
+[node name="Kop" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43787, -0.078042)
 
 [node name="Lyf" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37813, 0.381732, 0)
 
 [node name="Arm" parent="Lyf" instance=ExtResource("2_4vtts")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.294385, 0.53647, -0.130446)
+
+[node name="state_machine" type="Node" parent="."]
+script = ExtResource("3_ndnrv")
+
+[node name="Idle" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "jump_state", "move_state")]
+script = ExtResource("4_0n08y")
+fall_state = NodePath("../Fall")
+jump_state = NodePath("../Jump")
+move_state = NodePath("../Move")
+
+[node name="Jump" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
+script = ExtResource("5_o8vpl")
+fall_state = NodePath("../Fall")
+idle_state = NodePath("../Idle")
+move_state = NodePath("../Move")
+jump_force = null
+animation_name = null
+move_speed = null
+
+[node name="Fall" type="Node" parent="state_machine"]
+script = ExtResource("6_xnlso")
+
+[node name="Move" type="Node" parent="state_machine"]
+script = ExtResource("7_0k8gb")
