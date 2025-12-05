@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
-var speed: float = 500.0
+var spoed
+const SPOED_LOOP: float = 5
+const SPOED_HARDLOOP: float = 8
 var sensitivity: float = 0.4
 # Hoe vinnig kop op en af gaan
 const BOB_FREQ = 2.0
@@ -45,8 +47,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 	
 func _physics_process(delta: float) -> void:
-	const SPEED: float = 5.5
-	
 	var input_direction_2D = Input.get_vector(
 		#move left and right = beweeg -x of +x
 		#move forward and backward = beweeg -y of +y
@@ -63,16 +63,30 @@ func _physics_process(delta: float) -> void:
 		input_direction_2D.y
 	)
 	
+	#Hardloop en Loop
+	if Input.is_action_pressed("Sprint"):
+		spoed = SPOED_HARDLOOP
+	else:
+		spoed = SPOED_LOOP
+	
 	#transform Orientation sodat hy nie net z en x in een rigting vat nie
 	#Basis is vir X Y Z 
 	var direction = transform.basis * input_direction_3D
-	#Beweeg x
 	
-	velocity.x = direction.x * SPEED
-	
-	#Beweeg z
-	velocity.z = direction.z * SPEED
-	
+	if is_on_floor():
+		if direction:
+			#Beweeg x
+			velocity.x = direction.x * spoed
+			#Beweeg z
+			velocity.z = direction.z * spoed
+		else:
+			# Friction
+			velocity.x = lerp(velocity.x, direction.x * spoed, delta * 7.0)
+			velocity.z = lerp(velocity.z, direction.z * spoed, delta * 7.0)
+	else:
+		# Laat player nog voorentoe gaan as spring en land 
+		velocity.x = lerp(velocity.x, direction.x * spoed, delta * 2.0)
+		velocity.z = lerp(velocity.z, direction.z * spoed, delta * 2.0)
 	#Gravity
 	velocity.y -= 20.0 * delta
 	#Soek spring key dan gaan op en moet op grond wees
