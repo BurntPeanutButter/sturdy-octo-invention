@@ -21,7 +21,13 @@ func process_input(event: InputEvent) -> State:
 
 func process_physics(delta: float) -> State:
 	parent.velocity.y -= gravity * delta
-
+	
+	# Handle sprinting vs walkinga
+	if Input.is_action_pressed("sprint"):
+		parent.spoed = parent.SPOED_HARDLOOP
+	else:
+		parent.spoed = parent.SPOED_LOOP
+	
 	var direction: Vector3 = parent.input_dir_3d
 
 	if direction != Vector3.ZERO:

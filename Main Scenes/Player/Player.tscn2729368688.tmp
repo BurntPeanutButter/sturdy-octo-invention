@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://40ttmep0v6w6"]
+[gd_scene load_steps=12 format=3 uid="uid://40ttmep0v6w6"]
 
 [ext_resource type="Script" uid="uid://byb2cptikno6a" path="res://Main Scenes/Player/Player Movement/player.gd" id="1_xnlso"]
 [ext_resource type="PackedScene" uid="uid://dji7sp3dr7qui" path="res://Model/RegterArm.glb" id="2_xnlso"]
@@ -7,8 +7,6 @@
 [ext_resource type="Script" uid="uid://u0xjauhuq6fc" path="res://Main Scenes/Player/Player Movement/jump.gd" id="5_o8vpl"]
 [ext_resource type="Script" uid="uid://wd40eqj75f1j" path="res://Main Scenes/Player/Player Movement/fall.gd" id="6_xnlso"]
 [ext_resource type="Script" uid="uid://csqyc6y23i5lc" path="res://Main Scenes/Player/Player Movement/move.gd" id="7_0k8gb"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_xnlso"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0rwas"]
 
@@ -55,10 +53,6 @@ script = ExtResource("1_xnlso")
 accel = 12.0
 friction = 12.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9945679, 0)
-mesh = SubResource("CapsuleMesh_xnlso")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_0rwas")
@@ -79,14 +73,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 1.569, -0.1)
 current = true
 near = 0.001
 
-[node name="Lyf" type="Node3D" parent="."]
-editor_description = "LOS HIERDIE UIT
-Die viewbob maak die shit so weird
-"
-transform = Transform3D(0.98777825, 0, -0.15586558, 0, 1, 0, 0.15586558, 0, 0.98777825, 0.070007324, 1.3250732, -0.35302734)
-
-[node name="RegterArm" parent="Lyf" instance=ExtResource("2_xnlso")]
-transform = Transform3D(-0.58939385, 0, 0.80784583, 0, 1, 0, -0.80784583, 0, -0.58939385, -0.25805664, -1.022335, -0.34452152)
+[node name="Arm" parent="Kop" instance=ExtResource("2_xnlso")]
+transform = Transform3D(-0.58939385, 0, 0.80784583, 0, 1, 0, -0.80784583, 0, -0.58939385, 0.49957275, -1.0947876, -0.3916016)
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("3_ndnrv")
