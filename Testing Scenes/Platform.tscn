@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ch5uini76gy6j"]
 
 [ext_resource type="PackedScene" uid="uid://40ttmep0v6w6" path="res://Main Scenes/Player/Player.tscn" id="1_ibub6"]
-[ext_resource type="Texture2D" uid="uid://d11vg1bameyww" path="res://textures/images.jpg" id="1_j5oed"]
+[ext_resource type="Texture2D" uid="uid://d11vg1bameyww" path="res://Model/images.jpg" id="1_j5oed"]
 
 [sub_resource type="Gradient" id="Gradient_cu77a"]
 interpolation_mode = 2

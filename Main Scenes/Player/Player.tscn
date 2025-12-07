@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://40ttmep0v6w6"]
 
-[ext_resource type="Script" uid="uid://byb2cptikno6a" path="res://Main Scenes/Player/player.gd" id="1_xnlso"]
-[ext_resource type="PackedScene" uid="uid://dd3hhxqg4jt7u" path="res://RegteArm.tscn" id="2_4vtts"]
+[ext_resource type="Script" uid="uid://byb2cptikno6a" path="res://Main Scenes/Player/Player Movement/player.gd" id="1_xnlso"]
+[ext_resource type="PackedScene" uid="uid://dji7sp3dr7qui" path="res://Model/RegterArm.glb" id="2_xnlso"]
 [ext_resource type="Script" uid="uid://b6mgo2jnhageg" path="res://Main Scenes/State Machine/state_machine.gd" id="3_ndnrv"]
-[ext_resource type="Script" uid="uid://dqduvui5mnjde" path="res://Main Scenes/Player/idle.gd" id="4_0n08y"]
-[ext_resource type="Script" uid="uid://u0xjauhuq6fc" path="res://Main Scenes/Player/jump.gd" id="5_o8vpl"]
-[ext_resource type="Script" uid="uid://wd40eqj75f1j" path="res://Main Scenes/Player/fall.gd" id="6_xnlso"]
-[ext_resource type="Script" uid="uid://csqyc6y23i5lc" path="res://Main Scenes/Player/move.gd" id="7_0k8gb"]
+[ext_resource type="Script" uid="uid://dqduvui5mnjde" path="res://Main Scenes/Player/Player Movement/idle.gd" id="4_0n08y"]
+[ext_resource type="Script" uid="uid://u0xjauhuq6fc" path="res://Main Scenes/Player/Player Movement/jump.gd" id="5_o8vpl"]
+[ext_resource type="Script" uid="uid://wd40eqj75f1j" path="res://Main Scenes/Player/Player Movement/fall.gd" id="6_xnlso"]
+[ext_resource type="Script" uid="uid://csqyc6y23i5lc" path="res://Main Scenes/Player/Player Movement/move.gd" id="7_0k8gb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0rwas"]
 
@@ -73,8 +73,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 1.569, -0.1)
 current = true
 near = 0.001
 
-[node name="Arm" parent="." instance=ExtResource("2_4vtts")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.672515, 0.918202, -0.130446)
+[node name="Arm" parent="Kop" instance=ExtResource("2_xnlso")]
+transform = Transform3D(-0.58939385, 0, 0.80784583, 0, 1, 0, -0.80784583, 0, -0.58939385, 0.49957275, -1.0947876, -0.3916016)
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("3_ndnrv")

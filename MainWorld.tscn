@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://n4d5a4pg777s"]
+
+[ext_resource type="Texture2D" uid="uid://d11vg1bameyww" path="res://Model/images.jpg" id="1_fqhjb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7u2t8"]
+albedo_texture = ExtResource("1_fqhjb")
+
+[node name="Main World" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2259827, 0, -0.80459595)
+size = Vector3(13.19635, 1, 7.546936)
+material = SubResource("StandardMaterial3D_7u2t8")
