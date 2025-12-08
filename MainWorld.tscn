@@ -1,13 +1,94 @@
-[gd_scene load_steps=3 format=3 uid="uid://n4d5a4pg777s"]
+[gd_scene load_steps=5 format=3 uid="uid://n4d5a4pg777s"]
 
-[ext_resource type="Texture2D" uid="uid://d11vg1bameyww" path="res://Model/images.jpg" id="1_fqhjb"]
+[ext_resource type="Texture2D" uid="uid://b6i42xv1uumu5" path="res://Model/Texture/dry_grass.jpg" id="1_7u2t8"]
+[ext_resource type="PackedScene" uid="uid://40ttmep0v6w6" path="res://Main Scenes/Player/Player.tscn" id="1_fqhjb"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7u2t8"]
-albedo_texture = ExtResource("1_fqhjb")
+[sub_resource type="Environment" id="Environment_fqhjb"]
+background_mode = 1
+background_color = Color(0.63612735, 0.26518568, 0, 1)
+ambient_light_color = Color(0.90010226, 0, 0.17780682, 1)
+fog_enabled = true
+fog_light_color = Color(0.8068832, 0.43917736, 0.17295426, 1)
+fog_height_density = 1.328
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xxmu"]
+albedo_color = Color(0.88589734, 0.57662874, 0.16835344, 1)
+albedo_texture = ExtResource("1_7u2t8")
+uv1_scale = Vector3(0.35, 0.35, 0.35)
+uv1_triplanar = true
 
 [node name="Main World" type="Node3D"]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2259827, 0, -0.80459595)
-size = Vector3(13.19635, 1, 7.546936)
-material = SubResource("StandardMaterial3D_7u2t8")
+[node name="Player" parent="." instance=ExtResource("1_fqhjb")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-2.1855692e-08, -0.8660254, 0.5, -3.7855173e-08, 0.5, 0.8660254, -1, -1.7763568e-15, -4.3711385e-08, 5, 5, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fqhjb")
+
+[node name="floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+use_collision = true
+size = Vector3(10, 10, 10)
+material = SubResource("StandardMaterial3D_4xxmu")
+
+[node name="floor2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 12)
+use_collision = true
+size = Vector3(10, 10, 10)
+material = SubResource("StandardMaterial3D_4xxmu")
+
+[node name="floor3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -5, 0)
+use_collision = true
+size = Vector3(10, 10, 10)
+material = SubResource("StandardMaterial3D_4xxmu")
+
+[node name="floor4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, -12)
+use_collision = true
+size = Vector3(10, 10, 10)
+material = SubResource("StandardMaterial3D_4xxmu")
+
+[node name="floor5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -5, 0)
+use_collision = true
+size = Vector3(10, 10, 10)
+material = SubResource("StandardMaterial3D_4xxmu")
+
+[node name="floor6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -5, 12)
+use_collision = true
+size = Vector3(10, 10, 10)
+material = SubResource("StandardMaterial3D_4xxmu")
+
+[node name="floor7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -5, 12)
+use_collision = true
+size = Vector3(10, 10, 10)
+material = SubResource("StandardMaterial3D_4xxmu")
+
+[node name="floor8" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -5, -12)
+use_collision = true
+size = Vector3(10, 10, 10)
+material = SubResource("StandardMaterial3D_4xxmu")
+
+[node name="floor9" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -5, -12)
+use_collision = true
+size = Vector3(10, 10, 10)
+material = SubResource("StandardMaterial3D_4xxmu")
+
+[node name="floor10" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -5, -24)
+use_collision = true
+size = Vector3(10, 10, 10)
+material = SubResource("StandardMaterial3D_4xxmu")
+
+[node name="floor11" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 24)
+use_collision = true
+size = Vector3(10, 10, 10)
+material = SubResource("StandardMaterial3D_4xxmu")
