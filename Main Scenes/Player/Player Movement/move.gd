@@ -43,7 +43,7 @@ func process_physics(delta: float) -> State:
 	parent.move_and_slide()
 
 	# Return to idle if no input and on ground
-	if parent.input_dir_3d == Vector3.ZERO and parent.is_on_floor():
+	if parent.velocity.x < 0.01 and parent.velocity.z < 0.01 and parent.is_on_floor():
 		return idle_state
 
 	if !parent.is_on_floor() and parent.velocity.y < 0:

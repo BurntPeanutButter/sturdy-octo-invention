@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://40ttmep0v6w6"]
+[gd_scene load_steps=14 format=3 uid="uid://40ttmep0v6w6"]
 
 [ext_resource type="Script" uid="uid://byb2cptikno6a" path="res://Main Scenes/Player/Player Movement/player.gd" id="1_xnlso"]
 [ext_resource type="PackedScene" uid="uid://8me4rii5flc6" path="res://Model/Arm/RegterArm.tscn" id="2_xnlso"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://u0xjauhuq6fc" path="res://Main Scenes/Player/Player Movement/jump.gd" id="5_o8vpl"]
 [ext_resource type="Script" uid="uid://wd40eqj75f1j" path="res://Main Scenes/Player/Player Movement/fall.gd" id="6_xnlso"]
 [ext_resource type="Script" uid="uid://csqyc6y23i5lc" path="res://Main Scenes/Player/Player Movement/move.gd" id="7_0k8gb"]
-[ext_resource type="Script" uid="uid://dnlvy4ftyplvw" path="res://Main Scenes/Player/mouse_capture.gd" id="8_0k8gb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xnlso"]
 albedo_color = Color(1, 0, 1, 1)
@@ -103,7 +102,7 @@ script = ExtResource("4_0n08y")
 fall_state = NodePath("../fall")
 jump_state = NodePath("../jump")
 move_state = NodePath("../move")
-mouse_state = NodePath("../mouse_capture")
+mouse_state = NodePath("")
 animation_name = "idle"
 
 [node name="jump" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "move_state", "mouse_state")]
@@ -111,24 +110,17 @@ script = ExtResource("5_o8vpl")
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
 move_state = NodePath("../move")
-mouse_state = NodePath("../mouse_capture")
+mouse_state = NodePath("")
 
 [node name="fall" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "move_state", "mouse_state")]
 script = ExtResource("6_xnlso")
 idle_state = NodePath("../idle")
 move_state = NodePath("../move")
-mouse_state = NodePath("../mouse_capture")
+mouse_state = NodePath("")
 
 [node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state", "mouse_state")]
 script = ExtResource("7_0k8gb")
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
 jump_state = NodePath("../jump")
-mouse_state = NodePath("../mouse_capture")
-
-[node name="mouse_capture" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "jump_state", "move_state", "idle_state")]
-script = ExtResource("8_0k8gb")
-fall_state = NodePath("../fall")
-jump_state = NodePath("../jump")
-move_state = NodePath("../move")
-idle_state = NodePath("../idle")
+mouse_state = NodePath("")

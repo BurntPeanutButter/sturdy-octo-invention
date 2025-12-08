@@ -50,8 +50,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Animation for left click
 	if Input.is_action_just_pressed("left_click"):
 		animations.play("pew")
-	else:
-		animations.play("idle")
+		
 	# Pass to state machine for jump / other input handling
 	state_machine.process_input(event)
 

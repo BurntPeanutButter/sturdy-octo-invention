@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyym8hxouv0fu"]
+[gd_scene load_steps=3 format=3 uid="uid://b0n63sna5ve8o"]
 
 [ext_resource type="Script" uid="uid://desah8hwllccy" path="res://Dialogue/collision_shape_3d.gd" id="1_v4gio"]
 
