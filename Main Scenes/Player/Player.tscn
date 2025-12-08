@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://40ttmep0v6w6"]
+[gd_scene load_steps=13 format=3 uid="uid://40ttmep0v6w6"]
 
 [ext_resource type="Script" uid="uid://byb2cptikno6a" path="res://Main Scenes/Player/Player Movement/player.gd" id="1_xnlso"]
 [ext_resource type="PackedScene" uid="uid://8me4rii5flc6" path="res://Model/Arm/RegterArm.tscn" id="2_xnlso"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://u0xjauhuq6fc" path="res://Main Scenes/Player/Player Movement/jump.gd" id="5_o8vpl"]
 [ext_resource type="Script" uid="uid://wd40eqj75f1j" path="res://Main Scenes/Player/Player Movement/fall.gd" id="6_xnlso"]
 [ext_resource type="Script" uid="uid://csqyc6y23i5lc" path="res://Main Scenes/Player/Player Movement/move.gd" id="7_0k8gb"]
-[ext_resource type="Script" uid="uid://o5i660180dwq" path="res://Main Scenes/Player/pew.gd" id="8_0k8gb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xnlso"]
 
@@ -116,6 +115,3 @@ script = ExtResource("7_0k8gb")
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
 jump_state = NodePath("../jump")
-
-[node name="pew" type="Node" parent="state_machine"]
-script = ExtResource("8_0k8gb")
