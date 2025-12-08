@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ch5uini76gy6j"]
+[gd_scene load_steps=12 format=3 uid="uid://ch5uini76gy6j"]
 
-[ext_resource type="PackedScene" uid="uid://40ttmep0v6w6" path="res://Main Scenes/Player/Player.tscn" id="1_ibub6"]
 [ext_resource type="Texture2D" uid="uid://d11vg1bameyww" path="res://Model/images.jpg" id="1_j5oed"]
+[ext_resource type="Script" uid="uid://bvx3m66fj3lkg" path="res://Testing Scenes/SceneManager.gd" id="1_lam8o"]
 
 [sub_resource type="Gradient" id="Gradient_cu77a"]
 interpolation_mode = 2
@@ -32,25 +32,22 @@ fog_height_density = 0.09
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cu77a"]
 albedo_texture = ExtResource("1_j5oed")
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j5oed"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j5oed"]
+size = Vector3(0.6558838, 0.077423096, 0.75146484)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lam8o"]
+size = Vector3(1, 6.7108154, 1)
+
 [node name="Game" type="Node3D"]
+script = ExtResource("1_lam8o")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_s0l7e")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.813447, 0.238241, 0.530608, -0.581475, 0.354766, 0.73214, -0.0138154, -0.904092, 0.427114, 1.27678, 5.46059, -4.65986)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1.01969, 0.001118, 0.00102981, -0.00111341, 1.01968, -0.00452143, -0.00103476, 0.0045203, 1.01968, 1.49888, -6.4964, -3.24403)
-use_collision = true
-size = Vector3(20, 12.5054, 16)
-material = SubResource("StandardMaterial3D_cu77a")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="."]
-transform = Transform3D(1.01413, 0.000233821, 0.0171442, -0.00110735, 0.213258, -0.0752723, -0.00102912, 0.000945389, 16.9755, 0.498877, -1.4964, -150.19)
-use_collision = true
-size = Vector3(20, 12.5054, 16)
-material = SubResource("StandardMaterial3D_cu77a")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(-0.205279, 0.00111656, 0.0010286, 0.000224147, 1.01837, -0.0045161, 0.000208314, 0.00451451, 1.01847, -10.5429, 6.28108, -3.24403)
@@ -70,5 +67,40 @@ use_collision = true
 size = Vector3(20, 12.5054, 16)
 material = SubResource("StandardMaterial3D_cu77a")
 
-[node name="Player" parent="." instance=ExtResource("1_ibub6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6755447, -0.11985874, -4.1806593)
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1.01413, 0.000233821, 0.0171442, -0.00110735, 0.213258, -0.0752723, -0.00102912, 0.000945389, 16.9755, 0.498877, -1.4964, -150.19)
+use_collision = true
+size = Vector3(20, 12.5054, 16)
+material = SubResource("StandardMaterial3D_cu77a")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1531982, 0)
+physics_material_override = SubResource("PhysicsMaterial_j5oed")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="RigidBody3D"]
+transform = Transform3D(-0.14740187, -6.5705644e-06, -0.00014934156, 0.00016094961, -0.0059927306, 0.00065569143, 0.00014958032, -2.6566118e-05, -0.1478726, 0.6320464, -0.008932829, 0.4445718)
+use_collision = true
+size = Vector3(8.487061, 12.5054, 12.86615)
+material = SubResource("StandardMaterial3D_cu77a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.63603956, -0.008069992, 0.45717496)
+shape = SubResource("BoxShape3D_j5oed")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1.0196899, 0.0011180001, 0.0010298098, -0.00111341, 1.0196801, -0.00452143, -0.0010347598, 0.004520301, 1.01968, 1.49888, -6.4964, -3.24403)
+use_collision = true
+size = Vector3(20, 12.5054, 16)
+material = SubResource("StandardMaterial3D_cu77a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D"]
+transform = Transform3D(19.000002, 0, -1.8626451e-09, 1.1132215e-09, 0, -5.6177378e-06, 1.8626451e-09, 0, 16.000002, -0.003334999, 5.909617, -0.013543129)
+shape = SubResource("BoxShape3D_lam8o")
+
+[node name="SpawnLocations" type="Node3D" parent="."]
+
+[node name="0" type="Node3D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.275514, 0, 0)
+
+[node name="1" type="Node3D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7841063, 0, 0)

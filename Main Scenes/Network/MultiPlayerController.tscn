@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3 uid="uid://b100gxg2wm5xo"]
+
+[ext_resource type="Script" uid="uid://c18bp8rudbtby" path="res://Main Scenes/Network/multi_player_controller.gd" id="1_a06d0"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a06d0")
+
+[node name="Host" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.485
+anchor_top = 0.47900003
+anchor_right = 0.485
+anchor_bottom = 0.47900003
+offset_left = -42.53
+offset_top = -10.976006
+offset_right = 38.47
+offset_bottom = 15.023994
+text = "Boobs"
+
+[node name="Goin" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.81900007
+anchor_top = 0.5
+anchor_right = 0.81900007
+anchor_bottom = 0.5
+offset_left = -35.062027
+offset_top = -20.0
+offset_right = 34.937973
+offset_bottom = 19.0
+text = "Join"
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164
+anchor_top = 0.5
+anchor_right = 0.164
+anchor_bottom = 0.5
+offset_left = -40.872
+offset_top = -20.0
+offset_right = 39.128
+offset_bottom = 17.0
+text = "START"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.43400002
+anchor_top = 0.18400002
+anchor_right = 0.43400002
+anchor_bottom = 0.18400002
+offset_left = -63.332
+offset_top = -15.496002
+offset_right = 121.668
+offset_bottom = 15.503998
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16900001
+anchor_top = 0.18400002
+anchor_right = 0.16900001
+anchor_bottom = 0.18400002
+offset_left = -26.362003
+offset_top = -11.496002
+offset_right = 13.637997
+offset_bottom = 11.503998
+text = "NAAM:"
+
+[connection signal="button_down" from="Host" to="." method="_on_host_button_down"]
+[connection signal="button_down" from="Goin" to="." method="_on_goin_button_down"]
+[connection signal="button_down" from="Start" to="." method="_on_start_button_down"]

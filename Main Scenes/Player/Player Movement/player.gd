@@ -1,6 +1,9 @@
 class_name Player
 extends CharacterBody3D
 
+@export var syncPos = Vector3(0,0,0)
+@export var syncRot: float = 0
+
 var spoed: float
 const SPOED_LOOP: float = 5.0
 const SPOED_HARDLOOP: float = 8.0
@@ -66,13 +69,16 @@ func _physics_process(delta: float) -> void:
 	if input_dir_2d != Vector2.ZERO:
 		input_dir_3d = (transform.basis * Vector3(input_dir_2d.x, 0.0, input_dir_2d.y)).normalized()
 	
-	# Head bob
-	t_bob += delta * velocity.length() * float(is_on_floor())
-	kamera.transform.origin = _headbob(t_bob)
-	$Lyf/RegterArm.transform.origin = _headbob2(t_bob)
+	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		# Head bob
+		t_bob += delta * velocity.length() * float(is_on_floor())
+		kamera.transform.origin = _headbob(t_bob)
+		$Lyf/RegterArm.transform.origin = _headbob2(t_bob)
 	
-	# Let state machine handle movement, gravity, jumping
-	state_machine.process_physics(delta)
+		# Let state machine handle movement, gravity, jumping
+		state_machine.process_physics(delta)
+	else:
+		global_position = global_position.lerp(syncPos, .5)
 	
 
 func _process(delta: float) -> void:
