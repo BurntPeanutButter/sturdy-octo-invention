@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://n4d5a4pg777s"]
+[gd_scene load_steps=6 format=3 uid="uid://n4d5a4pg777s"]
 
 [ext_resource type="Texture2D" uid="uid://b6i42xv1uumu5" path="res://Model/Texture/dry_grass.jpg" id="1_7u2t8"]
 [ext_resource type="PackedScene" uid="uid://40ttmep0v6w6" path="res://Main Scenes/Player/Player.tscn" id="1_fqhjb"]
+[ext_resource type="PackedScene" uid="uid://cc1fomjf362h5" path="res://addons/flowerwall_postprocess/scenes/flowerwall_pp.tscn" id="3_4xxmu"]
 
 [sub_resource type="Environment" id="Environment_fqhjb"]
 background_mode = 1
@@ -34,13 +35,13 @@ size = Vector3(10, 10, 10)
 material = SubResource("StandardMaterial3D_4xxmu")
 
 [node name="floor2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 12)
 use_collision = true
 size = Vector3(10, 10, 10)
 material = SubResource("StandardMaterial3D_4xxmu")
 
 [node name="floor3" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -5, 0)
 use_collision = true
 size = Vector3(10, 10, 10)
 material = SubResource("StandardMaterial3D_4xxmu")
@@ -58,25 +59,25 @@ size = Vector3(10, 10, 10)
 material = SubResource("StandardMaterial3D_4xxmu")
 
 [node name="floor6" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -5, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -3, 12)
 use_collision = true
 size = Vector3(10, 10, 10)
 material = SubResource("StandardMaterial3D_4xxmu")
 
 [node name="floor7" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -5, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -3, 12)
 use_collision = true
 size = Vector3(10, 10, 10)
 material = SubResource("StandardMaterial3D_4xxmu")
 
 [node name="floor8" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -5, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -3, -12)
 use_collision = true
 size = Vector3(10, 10, 10)
 material = SubResource("StandardMaterial3D_4xxmu")
 
 [node name="floor9" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -5, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -5, -12)
 use_collision = true
 size = Vector3(10, 10, 10)
 material = SubResource("StandardMaterial3D_4xxmu")
@@ -92,3 +93,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 24)
 use_collision = true
 size = Vector3(10, 10, 10)
 material = SubResource("StandardMaterial3D_4xxmu")
+
+[node name="floor12" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -3, 24)
+use_collision = true
+size = Vector3(10, 10, 10)
+material = SubResource("StandardMaterial3D_4xxmu")
+
+[node name="floor13" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -3, 12)
+use_collision = true
+size = Vector3(10, 10, 10)
+material = SubResource("StandardMaterial3D_4xxmu")
+
+[node name="floor14" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -4, 24)
+use_collision = true
+size = Vector3(10, 10, 10)
+material = SubResource("StandardMaterial3D_4xxmu")
+
+[node name="flowerwall_pp" parent="." instance=ExtResource("3_4xxmu")]

@@ -27,6 +27,7 @@ offset_left = 1.0
 offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_8p6dx")
 flowerwall_crt_config_ui = NodePath("UI")
 dither = NodePath("dithering")
