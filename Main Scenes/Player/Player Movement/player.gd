@@ -8,6 +8,7 @@ var sensitivity: float = 0.4
 
 @export var accel: float        # acceleration factor
 @export var friction: float     # deceleration factor
+@export var jump_force: float = 10.0
 
 # Head bob constants
 const BOB_FREQ = 2.0
@@ -37,7 +38,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		# Look up / down
 		kamera.rotation_degrees.x -= event.relative.y * sensitivity
 		kamera.rotation_degrees.x = clamp(kamera.rotation_degrees.x, -80.0, 80.0)
-	
+		
 	# Escape key: show mouse
 	elif event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -51,7 +52,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		animations.play("pew")
 	else:
 		animations.play("idle")
-	
 	# Pass to state machine for jump / other input handling
 	state_machine.process_input(event)
 

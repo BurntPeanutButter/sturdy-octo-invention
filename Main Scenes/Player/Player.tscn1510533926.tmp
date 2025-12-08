@@ -93,37 +93,32 @@ transform = Transform3D(-0.30843604, 0, 0.951245, 0, 1, 0, -0.951245, 0, -0.3084
 script = ExtResource("3_ndnrv")
 starting_state = NodePath("idle")
 
-[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "jump_state", "move_state", "mouse_state")]
+[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "jump_state", "move_state")]
 script = ExtResource("4_0n08y")
 fall_state = NodePath("../fall")
 jump_state = NodePath("../jump")
 move_state = NodePath("../move")
-mouse_state = NodePath("../mouse_capture")
 animation_name = "idle"
 
-[node name="jump" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "move_state", "mouse_state")]
+[node name="jump" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
 script = ExtResource("5_o8vpl")
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
 move_state = NodePath("../move")
-mouse_state = NodePath("../mouse_capture")
+animation_name = "jump"
 
-[node name="fall" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "move_state", "mouse_state")]
+[node name="fall" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "move_state")]
 script = ExtResource("6_xnlso")
 idle_state = NodePath("../idle")
 move_state = NodePath("../move")
-mouse_state = NodePath("../mouse_capture")
+animation_name = "fall"
 
-[node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state", "mouse_state")]
+[node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state")]
 script = ExtResource("7_0k8gb")
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
 jump_state = NodePath("../jump")
-mouse_state = NodePath("../mouse_capture")
+animation_name = "move"
 
-[node name="mouse_capture" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "jump_state", "move_state", "idle_state")]
+[node name="mouse_capture" type="Node" parent="state_machine"]
 script = ExtResource("8_0k8gb")
-fall_state = NodePath("../fall")
-jump_state = NodePath("../jump")
-move_state = NodePath("../move")
-idle_state = NodePath("../idle")

@@ -2,10 +2,11 @@ extends State
 
 @export var idle_state: State
 @export var move_state: State
+@export var mouse_state: State
 
 func process_physics(delta: float) -> State:
 	parent.velocity.y -= gravity * delta
-
+	
 	var direction: Vector3 = parent.input_dir_3d
 
 	if direction != Vector3.ZERO:

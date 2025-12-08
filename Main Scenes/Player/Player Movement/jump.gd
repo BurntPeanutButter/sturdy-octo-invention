@@ -3,18 +3,18 @@ extends State
 @export var fall_state: State
 @export var idle_state: State
 @export var move_state: State
+@export var mouse_state: State
 
-@export var jump_force: float = 10.0
 
 func enter() -> void:
 	super()
-	parent.velocity.y = jump_force
+	parent.velocity.y = parent.jump_force
 
 func process_physics(delta: float) -> State:
 	parent.velocity.y -= gravity * delta
 
 	if Input.is_action_just_released("jump") and parent.velocity.y > 0.0:
-		parent.velocity.y = 0.0
+		parent.velocity.y -= 4.0
 
 	var direction: Vector3 = parent.input_dir_3d
 	if direction != Vector3.ZERO:

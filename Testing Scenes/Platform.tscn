@@ -6,11 +6,11 @@
 [sub_resource type="Gradient" id="Gradient_cu77a"]
 interpolation_mode = 2
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_j5oed"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lam8o"]
 gradient = SubResource("Gradient_cu77a")
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lam8o"]
-panorama = SubResource("GradientTexture2D_j5oed")
+panorama = SubResource("GradientTexture2D_lam8o")
 
 [sub_resource type="Sky" id="Sky_ww0ri"]
 sky_material = SubResource("PanoramaSkyMaterial_lam8o")
