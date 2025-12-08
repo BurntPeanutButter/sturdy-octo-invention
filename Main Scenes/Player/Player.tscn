@@ -1,0 +1,121 @@
+[gd_scene load_steps=14 format=3 uid="uid://40ttmep0v6w6"]
+
+[ext_resource type="Script" uid="uid://byb2cptikno6a" path="res://Main Scenes/Player/Player Movement/player.gd" id="1_xnlso"]
+[ext_resource type="PackedScene" uid="uid://8me4rii5flc6" path="res://Model/Arm/RegterArm.tscn" id="2_xnlso"]
+[ext_resource type="Script" uid="uid://b6mgo2jnhageg" path="res://Main Scenes/State Machine/state_machine.gd" id="3_ndnrv"]
+[ext_resource type="Script" uid="uid://dqduvui5mnjde" path="res://Main Scenes/Player/Player Movement/idle.gd" id="4_0n08y"]
+[ext_resource type="Script" uid="uid://u0xjauhuq6fc" path="res://Main Scenes/Player/Player Movement/jump.gd" id="5_o8vpl"]
+[ext_resource type="Script" uid="uid://wd40eqj75f1j" path="res://Main Scenes/Player/Player Movement/fall.gd" id="6_xnlso"]
+[ext_resource type="Script" uid="uid://csqyc6y23i5lc" path="res://Main Scenes/Player/Player Movement/move.gd" id="7_0k8gb"]
+[ext_resource type="Script" uid="uid://o5i660180dwq" path="res://Main Scenes/Player/pew.gd" id="8_0k8gb"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xnlso"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0rwas"]
+
+[sub_resource type="Animation" id="Animation_ndnrv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.01, 1.569, -0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_4vtts"]
+resource_name = "head_bob"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.03, 1.569, -0.1), Vector3(0, 1.549, -0.1), Vector3(0.03, 1.569, -0.1), Vector3(0, 1.549, -0.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ndnrv"]
+_data = {
+&"RESET": SubResource("Animation_ndnrv"),
+&"head_bob": SubResource("Animation_4vtts")
+}
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_xnlso")
+accel = 12.0
+friction = 15.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9945679, 0)
+mesh = SubResource("CapsuleMesh_xnlso")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_0rwas")
+debug_color = Color(0, 0.6, 0.698039, 0.866667)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Kop")
+libraries = {
+&"": SubResource("AnimationLibrary_ndnrv")
+}
+
+[node name="Kop" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43787, -0.078042)
+
+[node name="Camera3D" type="Camera3D" parent="Kop"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 1.569, -0.1)
+current = true
+near = 0.001
+
+[node name="Lyf" type="Node3D" parent="."]
+editor_description = "LOS HIERDIE UIT
+Die viewbob maak die shit so weird
+"
+transform = Transform3D(0.98777825, 0, -0.15586558, 0, 1, 0, 0.15586558, 0, 0.98777825, 0.070007324, 1.3250732, -0.35302734)
+
+[node name="RegterArm" parent="Lyf" instance=ExtResource("2_xnlso")]
+transform = Transform3D(-0.30843604, 0, 0.951245, 0, 1, 0, -0.951245, 0, -0.30843604, -0.026290972, 0.0023841858, 0.28253642)
+
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("3_ndnrv")
+starting_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "jump_state", "move_state")]
+script = ExtResource("4_0n08y")
+fall_state = NodePath("../fall")
+jump_state = NodePath("../jump")
+move_state = NodePath("../move")
+animation_name = "idle"
+
+[node name="jump" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
+script = ExtResource("5_o8vpl")
+fall_state = NodePath("../fall")
+idle_state = NodePath("../idle")
+move_state = NodePath("../move")
+
+[node name="fall" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "move_state")]
+script = ExtResource("6_xnlso")
+idle_state = NodePath("../idle")
+move_state = NodePath("../move")
+
+[node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state")]
+script = ExtResource("7_0k8gb")
+fall_state = NodePath("../fall")
+idle_state = NodePath("../idle")
+jump_state = NodePath("../jump")
+
+[node name="pew" type="Node" parent="state_machine"]
+script = ExtResource("8_0k8gb")

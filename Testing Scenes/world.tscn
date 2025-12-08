@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlhdwiwibflgj"]
+
+[ext_resource type="PackedScene" uid="uid://b5k3or1cinyej" path="res://Main Scenes/Player/Player.tscn" id="1_f3sb7"]
+
+[sub_resource type="Environment" id="Environment_gv5m4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f3sb7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_f3sb7"]
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gv5m4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.05428799, 0.9985253, 0, -0.9985253, 0.05428799, 0, 10.425669, 6.773773)
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level"]
+transform = Transform3D(16.68995, 0, 0, 0, 1, 0, 0, 0, 9.367729, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_f3sb7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/CollisionShape3D"]
+mesh = SubResource("BoxMesh_f3sb7")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_f3sb7")]
