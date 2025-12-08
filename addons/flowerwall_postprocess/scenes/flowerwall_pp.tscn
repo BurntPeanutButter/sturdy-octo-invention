@@ -27,6 +27,7 @@ offset_left = 1.0
 offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_8p6dx")
 flowerwall_crt_config_ui = NodePath("UI")
 dither = NodePath("dithering")
@@ -110,6 +111,7 @@ anchor_bottom = 1.0
 offset_right = 572.0
 grow_vertical = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 color = Color(0.121569, 0.121569, 0.121569, 0.721569)
 
 [node name="Presets" type="OptionButton" parent="UI/FlowerwallCrtConfigUi" node_paths=PackedStringArray("color_compression", "downscale", "preblur_sl", "grain_sl", "scanlines_size_slider", "scanlines_sl", "curve_sl", "vignette_size_sl", "vignette_smoothness_sl", "wiggle_sl", "chromaberr_sl", "brightness", "bloom_t", "bloom_i", "rgb")]

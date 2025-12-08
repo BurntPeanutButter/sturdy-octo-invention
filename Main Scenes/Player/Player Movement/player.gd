@@ -4,7 +4,7 @@ extends CharacterBody3D
 var spoed: float
 const SPOED_LOOP: float = 5.0
 const SPOED_HARDLOOP: float = 8.0
-var sensitivity: float = 0.4
+@export var sensitivity: float = 0.4
 
 @export var accel: float        # acceleration factor
 @export var friction: float     # deceleration factor
