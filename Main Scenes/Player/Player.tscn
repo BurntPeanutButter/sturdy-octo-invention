@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5k3or1cinyej"]
+[gd_scene load_steps=8 format=3 uid="uid://b5k3or1cinyej"]
 
 [ext_resource type="Script" uid="uid://b6nsq7jacqhom" path="res://Main Scenes/Player/player.gd" id="1_xhfnw"]
 [ext_resource type="PackedScene" uid="uid://dd3hhxqg4jt7u" path="res://RegteArm.tscn" id="2_4vtts"]
@@ -43,6 +43,8 @@ _data = {
 &"head_bob": SubResource("Animation_4vtts")
 }
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4vtts"]
+
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_xhfnw")
 
@@ -70,3 +72,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37813, 0.381732, 0)
 
 [node name="Arm" parent="Lyf" instance=ExtResource("2_4vtts")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.294385, 0.53647, -0.130446)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0125126, 0)
+mesh = SubResource("CapsuleMesh_4vtts")

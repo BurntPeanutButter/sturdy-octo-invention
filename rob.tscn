@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://cag5hqyae44ea"]
+
+[ext_resource type="Script" uid="uid://cn0s0kr8s5bdi" path="res://rob.gd" id="1_urjpp"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dbd6d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbd6d"]
+albedo_color = Color(0.3334188, 0.22538492, 0.13683748, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_urjpp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g8vmf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urjpp"]
+albedo_color = Color(0.33333334, 0.22352941, 0.13725491, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8vmf"]
+albedo_color = Color(0.33333334, 0.22352941, 0.13725491, 1)
+
+[node name="Rob" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_urjpp")
+
+[node name="body_mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_dbd6d")
+surface_material_override/0 = SubResource("StandardMaterial3D_dbd6d")
+
+[node name="body_collision" type="CollisionShape3D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape3D_urjpp")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53841364, -0.49372405)
+
+[node name="arm_left_mesh" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.09358126, 0, 0, 0, 0.096905254, 0, 0, 0, 1.5397913, -0.48864573, -0.21188605, -0.17344731)
+mesh = SubResource("BoxMesh_g8vmf")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_urjpp")
+
+[node name="arm_right_mesh" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(-0.11392705, 0, 0, 0, 0.11085154, 0, 0, 0, 1.4378052, 0.398605, -0.2270664, -0.2148813)
+mesh = SubResource("BoxMesh_g8vmf")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_g8vmf")
