@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://40ttmep0v6w6"]
+[gd_scene load_steps=15 format=3 uid="uid://40ttmep0v6w6"]
 
 [ext_resource type="Script" uid="uid://byb2cptikno6a" path="res://Main Scenes/Player/Player Movement/player.gd" id="1_xnlso"]
 [ext_resource type="PackedScene" uid="uid://8me4rii5flc6" path="res://Model/Arm/RegterArm.tscn" id="2_xnlso"]
@@ -9,7 +9,11 @@
 [ext_resource type="Script" uid="uid://csqyc6y23i5lc" path="res://Main Scenes/Player/Player Movement/move.gd" id="7_0k8gb"]
 [ext_resource type="Script" uid="uid://dnlvy4ftyplvw" path="res://Main Scenes/Player/mouse_capture.gd" id="8_0k8gb"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xnlso"]
+albedo_color = Color(1, 0, 1, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xnlso"]
+material = SubResource("StandardMaterial3D_xnlso")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0rwas"]
 
