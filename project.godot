@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 network_manager="*res://Main Scenes/Network/network_manager.gd"
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+flowerwall_crt="*res://addons/flowerwall_postprocess/scenes/flowerwall_pp.tscn"
 
 [display]
 

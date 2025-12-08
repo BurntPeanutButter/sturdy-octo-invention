@@ -4,7 +4,7 @@ class_name move
 @export var fall_state: State
 @export var idle_state: State
 @export var jump_state: State
-@export var mouse_state: State
+@export var pew_state: State
 
 func enter() -> void:
 	super()
@@ -18,6 +18,9 @@ func process_input(event: InputEvent) -> State:
 			return jump_state
 		elif Input.is_action_just_released("jump") and parent.velocity.y > 0.0:
 			parent.velocity.y -= 0.0
+		elif Input.is_action_just_pressed("left_click"):
+			return pew_state
+	
 	return null
 
 func process_physics(delta: float) -> State:
@@ -43,7 +46,7 @@ func process_physics(delta: float) -> State:
 	parent.move_and_slide()
 
 	# Return to idle if no input and on ground
-	if parent.velocity.x < 0.01 and parent.velocity.z < 0.01 and parent.is_on_floor():
+	if parent.input_dir_3d == Vector3.ZERO and parent.is_on_floor():
 		return idle_state
 
 	if !parent.is_on_floor() and parent.velocity.y < 0:
