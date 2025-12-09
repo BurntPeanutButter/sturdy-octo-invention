@@ -2,7 +2,6 @@ extends State
 
 @export var idle_state: State
 @export var move_state: State
-@export var mouse_state: State
 
 func process_physics(delta: float) -> State:
 	parent.velocity.y -= gravity * delta

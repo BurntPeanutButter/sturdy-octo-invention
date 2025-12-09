@@ -4,7 +4,7 @@ extends CharacterBody3D
 var spoed: float
 const SPOED_LOOP: float = 5.0
 const SPOED_HARDLOOP: float = 8.0
-@export var sensitivity: float = 0.4
+@export var sensitivity: float = 0.1
 
 @export var accel: float        # acceleration factor
 @export var friction: float     # deceleration factor
@@ -46,10 +46,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Left click: hide mouse
 	elif event.is_action_pressed("left_click"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
-	# Animation for left click
-	if Input.is_action_just_pressed("left_click"):
-		animations.play("pew")
+		
 		
 	# Pass to state machine for jump / other input handling
 	state_machine.process_input(event)

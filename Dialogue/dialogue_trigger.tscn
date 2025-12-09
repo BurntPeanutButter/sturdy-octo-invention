@@ -11,3 +11,5 @@
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_uyku0")
 script = ExtResource("1_v4gio")
+dialogues = Array[String](["Hey bub, whaddya think you're doin here!?", "IM HERE TO BEAT YOUR ASS", "WHAT?! WHY!?!?!?!?", "I just don't like the look of you're face... BITCH", "AAAAAAAAAAAAAAAAAAAAAAA"])
+speaker_names = Array[String](["Glorp", "Blork ( You )", "Glorp", "Blork ( You )", "Glorp"])

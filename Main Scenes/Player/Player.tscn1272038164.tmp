@@ -115,11 +115,13 @@ script = ExtResource("6_xnlso")
 idle_state = NodePath("../idle")
 move_state = NodePath("../move")
 
-[node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state")]
+[node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state", "pew_state")]
 script = ExtResource("7_0k8gb")
+animation_name = null
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
 jump_state = NodePath("../jump")
+pew_state = NodePath("../pew")
 
 [node name="pew" type="Node" parent="state_machine"]
 script = ExtResource("8_0k8gb")
