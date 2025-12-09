@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://40ttmep0v6w6"]
+[gd_scene load_steps=16 format=3 uid="uid://40ttmep0v6w6"]
 
 [ext_resource type="Script" uid="uid://bl2p14yb1fjpm" path="res://Main Scenes/Player/player.gd" id="1_xnlso"]
+[ext_resource type="Script" uid="uid://fx8ohhvi4u02" path="res://Main Scenes/Player/ray_interacted.gd" id="2_l7obl"]
 [ext_resource type="PackedScene" uid="uid://8me4rii5flc6" path="res://Model/Arm/RegterArm.tscn" id="2_xnlso"]
 [ext_resource type="Script" uid="uid://b6mgo2jnhageg" path="res://Main Scenes/State Machine/state_machine.gd" id="3_ndnrv"]
 [ext_resource type="Script" uid="uid://dqduvui5mnjde" path="res://Main Scenes/Player/Player Movement/idle.gd" id="4_0n08y"]
@@ -83,6 +84,34 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 1.569, -0.1)
 current = true
 near = 0.001
+
+[node name="RayCast3D" type="RayCast3D" parent="Kop"]
+script = ExtResource("2_l7obl")
+
+[node name="Control" type="Control" parent="Kop"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+mouse_filter = 2
+
+[node name="Prompt" type="Label" parent="Kop/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Lyf" type="Node3D" parent="."]
 editor_description = "LOS HIERDIE UIT

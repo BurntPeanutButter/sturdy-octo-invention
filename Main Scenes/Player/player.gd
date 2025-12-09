@@ -19,7 +19,8 @@ var t_bob = 0.0
 @onready var kop = $Kop
 @onready var kamera = $Kop/Camera3D
 @onready var animations = $Lyf/RegterArm/AnimationPlayer
-@onready var state_machine = $state_machine
+@onready var state_machine = $state_machine	
+@onready var raycast: RayCast3D = $Kop/RayCast3D
 
 # Input tracking for states
 var input_dir_2d: Vector2 = Vector2.ZERO

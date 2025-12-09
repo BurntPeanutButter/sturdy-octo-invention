@@ -92,7 +92,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07745361, 0)
 script = ExtResource("6_cprn7")
 
 [node name="StaticBody3D" parent="Butt" instance=ExtResource("7_no856")]
-prompt_message = null
-prompt_action = null
 
 [connection signal="interacted" from="Butt/StaticBody3D" to="Butt" method="_on_static_body_3d_interacted"]

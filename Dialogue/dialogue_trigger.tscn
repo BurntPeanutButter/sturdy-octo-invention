@@ -4,14 +4,14 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uyku0"]
 
-[node name="dialogue_trigger" type="Node3D"]
+[node name="dialogue_trigger_area" type="Node3D"]
 script = ExtResource("1_v4gio")
 dialogues = Array[String](["Whaddya doin pal... This is my TURF", "129.0.0.1 608 Rose Road ", "WTF! IT WAS A JOKE", "you will meet god now.", "Oh allah the almighty..."])
 speaker_names = Array[String](["Brorp", "Robington Robertius (You)", "Brorp", "Robington Robertius(You)", "Brorp"])
 
-[node name="trigger" type="Area3D" parent="."]
+[node name="dialogue_trigger" type="Area3D" parent="."]
 
-[node name="Collision" type="CollisionShape3D" parent="trigger"]
+[node name="dialogue_trigger" type="CollisionShape3D" parent="dialogue_trigger"]
 shape = SubResource("BoxShape3D_uyku0")
 
-[connection signal="body_entered" from="trigger" to="." method="start_dialogue"]
+[connection signal="body_entered" from="dialogue_trigger" to="." method="start_dialogue"]
