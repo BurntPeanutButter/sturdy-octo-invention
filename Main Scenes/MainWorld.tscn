@@ -6,14 +6,14 @@
 
 [sub_resource type="Environment" id="Environment_fqhjb"]
 background_mode = 1
-background_color = Color(0.63612735, 0.26518568, 0, 1)
-ambient_light_color = Color(0.90010226, 0, 0.17780682, 1)
+background_color = Color(0.636127, 0.265186, 0, 1)
+ambient_light_color = Color(0.900102, 0, 0.177807, 1)
 fog_enabled = true
-fog_light_color = Color(0.8068832, 0.43917736, 0.17295426, 1)
+fog_light_color = Color(0.806883, 0.439177, 0.172954, 1)
 fog_height_density = 1.328
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xxmu"]
-albedo_color = Color(0.88589734, 0.57662874, 0.16835344, 1)
+albedo_color = Color(0.885897, 0.576629, 0.168353, 1)
 albedo_texture = ExtResource("1_7u2t8")
 uv1_scale = Vector3(0.35, 0.35, 0.35)
 uv1_triplanar = true
@@ -23,7 +23,7 @@ uv1_triplanar = true
 [node name="Player" parent="." instance=ExtResource("1_fqhjb")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-2.1855692e-08, -0.8660254, 0.5, -3.7855173e-08, 0.5, 0.8660254, -1, -1.7763568e-15, -4.3711385e-08, 5, 5, 0)
+transform = Transform3D(-2.18557e-08, -0.866025, 0.5, -3.78552e-08, 0.5, 0.866025, -1, -1.77636e-15, -4.37114e-08, 5, 5, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fqhjb")
