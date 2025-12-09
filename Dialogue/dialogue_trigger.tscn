@@ -1,15 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0n63sna5ve8o"]
 
-[ext_resource type="Script" uid="uid://desah8hwllccy" path="res://Dialogue/collision_shape_3d.gd" id="1_v4gio"]
+[ext_resource type="Script" uid="uid://c0okcxihhayec" path="res://Dialogue/dialogue_trigger.gd" id="1_v4gio"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uyku0"]
 
 [node name="dialogue_trigger" type="Node3D"]
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("BoxShape3D_uyku0")
 script = ExtResource("1_v4gio")
-dialogues = Array[String](["Hey bub, whaddya think you're doin here!?", "IM HERE TO BEAT YOUR ASS", "WHAT?! WHY!?!?!?!?", "I just don't like the look of you're face... BITCH", "AAAAAAAAAAAAAAAAAAAAAAA"])
-speaker_names = Array[String](["Glorp", "Blork ( You )", "Glorp", "Blork ( You )", "Glorp"])
+dialogues = Array[String](["Whaddya doin pal... This is my TURF", "129.0.0.1 608 Rose Road ", "WTF! IT WAS A JOKE", "you will meet god now.", "Oh allah the almighty..."])
+speaker_names = Array[String](["Brorp", "Robington Robertius (You)", "Brorp", "Robington Robertius(You)", "Brorp"])
+
+[node name="trigger" type="Area3D" parent="."]
+
+[node name="Collision" type="CollisionShape3D" parent="trigger"]
+shape = SubResource("BoxShape3D_uyku0")
+
+[connection signal="body_entered" from="trigger" to="." method="start_dialogue"]

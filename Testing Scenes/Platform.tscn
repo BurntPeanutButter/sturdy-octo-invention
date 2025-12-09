@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ch5uini76gy6j"]
+[gd_scene load_steps=12 format=3 uid="uid://ch5uini76gy6j"]
 
 [ext_resource type="PackedScene" uid="uid://40ttmep0v6w6" path="res://Main Scenes/Player/Player.tscn" id="1_ibub6"]
 [ext_resource type="Texture2D" uid="uid://d11vg1bameyww" path="res://Model/images.jpg" id="1_j5oed"]
-[ext_resource type="PackedScene" uid="uid://cc1fomjf362h5" path="res://addons/flowerwall_postprocess/scenes/flowerwall_pp.tscn" id="3_lam8o"]
+[ext_resource type="PackedScene" uid="uid://d1wa4gopbnjtv" path="res://Dialogue/dialog_ui.tscn" id="4_s0l7e"]
+[ext_resource type="PackedScene" uid="uid://b0n63sna5ve8o" path="res://Dialogue/dialogue_trigger.tscn" id="4_ww0ri"]
+[ext_resource type="PackedScene" uid="uid://br117il7jl20l" path="res://Model/Dumbass/Dumbass.tscn" id="5_s0l7e"]
 
 [sub_resource type="Gradient" id="Gradient_cu77a"]
 interpolation_mode = 2
@@ -74,4 +76,12 @@ material = SubResource("StandardMaterial3D_cu77a")
 [node name="Player" parent="." instance=ExtResource("1_ibub6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6755447, -0.11985874, -4.1806593)
 
-[node name="flowerwall_pp" parent="." instance=ExtResource("3_lam8o")]
+[node name="Dialog_UI" parent="." instance=ExtResource("4_s0l7e")]
+mouse_filter = 2
+
+[node name="dialogue_trigger" parent="." node_paths=PackedStringArray("speaker") instance=ExtResource("4_ww0ri")]
+transform = Transform3D(2.09, 0, 0, 0, 2.09, 0, 0, 0, 2.09, 0, 1.3178711, 0)
+speaker = NodePath("../Dumbasss")
+
+[node name="Dumbasss" parent="." instance=ExtResource("5_s0l7e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07745361, 0)

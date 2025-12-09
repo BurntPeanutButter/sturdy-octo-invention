@@ -44,24 +44,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Canvas" type="CanvasLayer" parent="."]
+visible = false
 
-[node name="bg" type="ColorRect" parent="CanvasLayer"]
+[node name="bg" type="ColorRect" parent="Canvas"]
 offset_left = 4.0
 offset_top = 750.0
 offset_right = 1937.0
 offset_bottom = 1077.0
 color = Color(0.12225223, 0.12225223, 0.12225223, 1)
 
-[node name="speaker_name" type="RichTextLabel" parent="CanvasLayer"]
+[node name="speaker_name" type="RichTextLabel" parent="Canvas"]
 offset_left = 16.0
 offset_top = 760.0
-offset_right = 704.0
-offset_bottom = 860.0
-theme_override_font_sizes/normal_font_size = 81
+offset_right = 1723.0
+offset_bottom = 881.0
+theme_override_font_sizes/normal_font_size = 86
 text = "Speaker Name"
 
-[node name="dialogue" type="RichTextLabel" parent="CanvasLayer"]
+[node name="dialogue" type="RichTextLabel" parent="Canvas"]
 offset_left = 16.0
 offset_top = 872.0
 offset_right = 1915.0
@@ -72,7 +73,7 @@ text = "Dialoog teks
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="continue" type="Button" parent="CanvasLayer"]
+[node name="continue" type="Button" parent="Canvas"]
 offset_left = 1595.0
 offset_top = 962.0
 offset_right = 1928.0
@@ -80,7 +81,7 @@ offset_bottom = 1067.0
 theme_override_font_sizes/font_size = 56
 text = "Continue"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Canvas"]
 libraries = {
 &"": SubResource("AnimationLibrary_vhl0v")
 }

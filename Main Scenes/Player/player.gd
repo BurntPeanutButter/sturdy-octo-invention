@@ -2,8 +2,8 @@ class_name Player
 extends CharacterBody3D
 
 var spoed: float
-const SPOED_LOOP: float = 5.0
-const SPOED_HARDLOOP: float = 8.0
+var SPOED_LOOP: float = 5.0
+var SPOED_HARDLOOP: float = 8.0
 @export var sensitivity: float = 0.1
 
 @export var accel: float        # acceleration factor

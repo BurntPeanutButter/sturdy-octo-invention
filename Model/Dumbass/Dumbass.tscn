@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://br117il7jl20l"]
+
+[sub_resource type="Animation" id="Animation_gch0l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kop/RigidBody3D/MeshInstance3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.4224472, 0.37708282, -0.011003733)]
+}
+
+[sub_resource type="Animation" id="Animation_wetf4"]
+resource_name = "talk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kop/RigidBody3D/MeshInstance3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.4224472, 0.37708282, -0.011003733), Vector3(0.4224472, 0.26252937, -0.011003733)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gch0l"]
+_data = {
+&"RESET": SubResource("Animation_gch0l"),
+&"talk": SubResource("Animation_wetf4")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wetf4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wetf4"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gch0l"]
+material = SubResource("StandardMaterial3D_wetf4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gch0l"]
+albedo_color = Color(0.63408047, 0.04465597, 0.20509547, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qigx2"]
+material = SubResource("StandardMaterial3D_gch0l")
+
+[node name="Dumbasss" type="Node3D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gch0l")
+}
+
+[node name="Kop" type="Node3D" parent="."]
+transform = Transform3D(0.09405638, 0, 0.99556684, 0, 1, 0, -0.99556684, 0, 0.09405638, 0, 1.4870138, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Kop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4670391, 0)
+gravity_scale = 0.0
+lock_rotation = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kop/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05114746, 0)
+shape = SubResource("CapsuleShape3D_wetf4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kop/RigidBody3D"]
+mesh = SubResource("CapsuleMesh_gch0l")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Kop/RigidBody3D"]
+transform = Transform3D(0.51, 0, 0, 0, 0.32, 0, 0, 0, 0.8, 0.4224472, 0.37708282, -0.011003733)
+mesh = SubResource("BoxMesh_qigx2")
+skeleton = NodePath("../../..")
