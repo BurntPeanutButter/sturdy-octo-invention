@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://40ttmep0v6w6"]
+[gd_scene load_steps=17 format=3 uid="uid://40ttmep0v6w6"]
 
 [ext_resource type="Script" uid="uid://bl2p14yb1fjpm" path="res://Main Scenes/Player/player.gd" id="1_xnlso"]
 [ext_resource type="Script" uid="uid://fx8ohhvi4u02" path="res://Main Scenes/Player/ray_interacted.gd" id="2_l7obl"]
 [ext_resource type="PackedScene" uid="uid://8me4rii5flc6" path="res://Model/Arm/RegterArm.tscn" id="2_xnlso"]
 [ext_resource type="Script" uid="uid://b6mgo2jnhageg" path="res://Main Scenes/State Machine/state_machine.gd" id="3_ndnrv"]
 [ext_resource type="Script" uid="uid://dqduvui5mnjde" path="res://Main Scenes/Player/Player Movement/idle.gd" id="4_0n08y"]
+[ext_resource type="Script" uid="uid://dixawb60b7wh7" path="res://Main Scenes/Player/canvas_layer.gd" id="4_418pu"]
 [ext_resource type="Script" uid="uid://u0xjauhuq6fc" path="res://Main Scenes/Player/Player Movement/jump.gd" id="5_o8vpl"]
 [ext_resource type="Script" uid="uid://wd40eqj75f1j" path="res://Main Scenes/Player/Player Movement/fall.gd" id="6_xnlso"]
 [ext_resource type="Script" uid="uid://csqyc6y23i5lc" path="res://Main Scenes/Player/Player Movement/move.gd" id="7_0k8gb"]
@@ -86,6 +87,8 @@ current = true
 near = 0.001
 
 [node name="RayCast3D" type="RayCast3D" parent="Kop"]
+transform = Transform3D(2.695, 0, 0, 0, -0.6350826, -2.6922257, 0, 13.985589, -0.12225339, 0, 0.058624268, 0)
+collision_mask = 2
 script = ExtResource("2_l7obl")
 
 [node name="Control" type="Control" parent="Kop"]
@@ -99,8 +102,10 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 mouse_filter = 2
 
-[node name="Prompt" type="Label" parent="Kop/Control"]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="Kop/Control"]
+script = ExtResource("4_418pu")
+
+[node name="Prompt" type="Label" parent="Kop/Control/CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -112,6 +117,8 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+uppercase = true
 
 [node name="Lyf" type="Node3D" parent="."]
 editor_description = "LOS HIERDIE UIT

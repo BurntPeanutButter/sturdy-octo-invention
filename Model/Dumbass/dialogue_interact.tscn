@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bb51mm8pcr16b"]
+[gd_scene load_steps=3 format=3 uid="uid://bb51mm8pcr16b"]
 
 [ext_resource type="Script" uid="uid://d0nxcnoi82jhw" path="res://dialogue_trigger_button.gd" id="1_m2lqj"]
+[ext_resource type="PackedScene" uid="uid://bs7kjhd415pry" path="res://Model/Dumbass/Button.tscn" id="2_qgvmf"]
 
 [node name="dialogue_trigger_interact" type="Node3D"]
 script = ExtResource("1_m2lqj")
+dialogues = Array[String](["Zoowee", "Mamama", "Zoowee"])
+speaker_names = Array[String](["Booger", "(You)", "Booger"])
+
+[node name="Button" parent="." instance=ExtResource("2_qgvmf")]
+transform = Transform3D(3, 0, 0, 0, 4, 0, 0, 0, 3, -0.013427734, 0.9501343, 0.030193329)
+collision_layer = 2
+collision_mask = 2
+prompt_message = "To Talk Press: "
+
+[connection signal="interacted" from="Button" to="." method="start_dialogue"]

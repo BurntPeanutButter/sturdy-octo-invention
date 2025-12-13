@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://ch5uini76gy6j"]
+[gd_scene load_steps=14 format=3 uid="uid://ch5uini76gy6j"]
 
 [ext_resource type="PackedScene" uid="uid://40ttmep0v6w6" path="res://Main Scenes/Player/Player.tscn" id="1_ibub6"]
 [ext_resource type="Texture2D" uid="uid://d11vg1bameyww" path="res://Model/images.jpg" id="1_j5oed"]
 [ext_resource type="PackedScene" uid="uid://d1wa4gopbnjtv" path="res://Dialogue/dialog_ui.tscn" id="4_s0l7e"]
 [ext_resource type="PackedScene" uid="uid://br117il7jl20l" path="res://Model/Dumbass/Dumbass.tscn" id="5_s0l7e"]
+[ext_resource type="Script" uid="uid://bfi7cqbrubyha" path="res://Testing Scenes/butt.gd" id="6_cprn7"]
+[ext_resource type="PackedScene" uid="uid://bs7kjhd415pry" path="res://Model/Dumbass/Button.tscn" id="7_no856"]
 [ext_resource type="PackedScene" uid="uid://bb51mm8pcr16b" path="res://Model/Dumbass/dialogue_interact.tscn" id="7_rq8c6"]
 
 [sub_resource type="Gradient" id="Gradient_cu77a"]
@@ -82,5 +84,13 @@ mouse_filter = 2
 [node name="Dumbasss" parent="." instance=ExtResource("5_s0l7e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07745361, 0)
 
+[node name="Terminal" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9584274, 1.1091003, 0)
+script = ExtResource("6_cprn7")
+
+[node name="Button" parent="Terminal" instance=ExtResource("7_no856")]
+
 [node name="dialogue_trigger_interact" parent="." node_paths=PackedStringArray("speaker") instance=ExtResource("7_rq8c6")]
 speaker = NodePath("../Dumbasss")
+
+[connection signal="interacted" from="Terminal/Button" to="Player" method="_on_button_interacted"]

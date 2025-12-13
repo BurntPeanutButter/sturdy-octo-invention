@@ -24,8 +24,8 @@ var started = false
 func _ready() -> void:
 	dialogue_ui.get_node("continue").connect("pressed", Callable(self, "continue_dialogue"))
 
-func start_dialogue(body):
-	if body == player and !started:
+func start_dialogue():
+	if emit_signal("interacted") and !started:
 		started = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		player.SPOED_LOOP = 0.0
@@ -63,3 +63,7 @@ func continue_dialogue():
 		dialogue_animation.play("scroll")
 	else:
 		end_dialogue()
+
+
+func _on_static_body_3d_interacted() -> void:
+	start_dialogue()

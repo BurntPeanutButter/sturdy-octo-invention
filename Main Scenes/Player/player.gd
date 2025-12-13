@@ -16,7 +16,6 @@ const BOB_AMP = 0.08
 var t_bob = 0.0
 
 # References from nodes
-@onready var kop = $Kop
 @onready var kamera = $Kop/Camera3D
 @onready var animations = $Lyf/RegterArm/AnimationPlayer
 @onready var state_machine = $state_machine	
@@ -86,3 +85,7 @@ func _headbob2(time: float) -> Vector3:
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP - 1
 	pos.x = sin(time * BOB_FREQ / 2) * BOB_AMP + 0.5
 	return pos
+
+
+func _on_button_interacted() -> void:
+	pass # Replace with function body.

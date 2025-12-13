@@ -68,6 +68,7 @@ lock_rotation = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Kop/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05114746, 0)
+visible = false
 shape = SubResource("CapsuleShape3D_wetf4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Kop/RigidBody3D"]
