@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://n4d5a4pg777s"]
+[gd_scene load_steps=5 format=3 uid="uid://n4d5a4pg777s"]
 
 [ext_resource type="Texture2D" uid="uid://d11vg1bameyww" path="res://Model/images.jpg" id="1_fqhjb"]
+[ext_resource type="PackedScene" uid="uid://br117il7jl20l" path="res://Model/Dumbass/Dumbass.tscn" id="2_4xxmu"]
+[ext_resource type="Script" path="res://Testing Scenes/chaser.gd" id="3_x0tsy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7u2t8"]
 albedo_texture = ExtResource("1_fqhjb")
@@ -11,3 +13,7 @@ albedo_texture = ExtResource("1_fqhjb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2259827, 0, -0.80459595)
 size = Vector3(13.19635, 1, 7.546936)
 material = SubResource("StandardMaterial3D_7u2t8")
+
+[node name="Dumbasss" parent="." instance=ExtResource("2_4xxmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12435806, 0.51010096, 0.9926076)
+script = ExtResource("3_x0tsy")
