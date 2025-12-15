@@ -4,6 +4,7 @@ class_name move
 @export var fall_state: State
 @export var idle_state: State
 @export var jump_state: State
+@export var pew_state: State
 
 func enter() -> void:
 	super()
@@ -17,6 +18,9 @@ func process_input(event: InputEvent) -> State:
 			return jump_state
 		elif Input.is_action_just_released("jump") and parent.velocity.y > 0.0:
 			parent.velocity.y -= 0.0
+	
+	if Input.is_action_just_pressed("left_click"):
+		return pew_state
 	
 	return null
 

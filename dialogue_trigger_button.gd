@@ -25,7 +25,7 @@ func _ready() -> void:
 	dialogue_ui.get_node("continue").connect("pressed", Callable(self, "continue_dialogue"))
 
 func start_dialogue():
-	if emit_signal("interacted") and !started:
+	if !started:
 		started = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		player.SPOED_LOOP = 0.0
@@ -60,6 +60,7 @@ func continue_dialogue():
 			speaker.get_node("AnimationPlayer").play("talk")
 		else:
 			speaker.get_node("AnimationPlayer").play("RESET")
+		dialogue_animation.set_speed_scale(2)
 		dialogue_animation.play("scroll")
 	else:
 		end_dialogue()
